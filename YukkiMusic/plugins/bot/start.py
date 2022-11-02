@@ -35,12 +35,7 @@ from YukkiMusic.utils.inline import (help_pannel, private_panel,
 loop = asyncio.get_running_loop()
 
 
-@app.on_message(
-    filters.command(get_command("START_COMMAND"))
-    & filters.private
-    & ~filters.edited
-    & ~BANNED_USERS
-)
+@app.on_message(filters.command("start") & filters.private)
 @LanguageStart
 async def start_comm(client, message: Message, _):
     await add_served_user(message.from_user.id)
@@ -186,14 +181,28 @@ async def start_comm(client, message: Message, _):
                     config.LOG_GROUP_ID,
                     f"{message.from_user.mention} has just started bot to check <code>VIDEO INFORMATION</code>\n\n**USER ID:** {sender_id}\n**USER NAME:** {sender_name}",
                 )
+    else:
+        try:
+            await app.resolve_peer(OWNER_ID[0])
+            OWNER = OWNER_ID[0]
+        except:
+            OWNER = None
+
+        if await is_on_off(config.LOG):
+            sender_id = message.from_user.id
+            sender_name = message.from_user.first_name
+            return await app.send_message(
+                config.LOG_GROUP_ID,
+                f"{message.from_user.mention} has just started Bot.\n\n**USER ID:** {sender_id}\n**USER NAME:** {sender_name}",
+            )
 
 
-@app.on_message(
-    filters.command(get_command("START_COMMAND"))
-    & filters.group
-    & ~filters.edited
-    & ~BANNED_USERS
-)
+#@app.on_message(
+#    filters.command(get_command("START_COMMAND"))
+#    & filters.group
+#    & ~filters.edited
+#    & ~BANNED_USERS
+#)
 @LanguageStart
 async def testbot(client, message: Message, _):
     out = start_pannel(_)
@@ -214,7 +223,7 @@ async def welcome(client, message: Message):
     if config.PRIVATE_BOT_MODE == str(True):
         if not await is_served_private_chat(message.chat.id):
             await message.reply_text(
-                "**Bot Musik Pribadi**\n\nHanya untuk obrolan resmi dari pemiliknya. Minta pemilik saya untuk mengizinkan obrolan Anda terlebih dahulu."
+                "**Private Music Bot**\n\nOnly for authorized chats from the owner. Ask my owner to allow your chat first."
             )
             return await app.leave_chat(message.chat.id)
     else:
