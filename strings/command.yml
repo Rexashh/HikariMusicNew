@@ -60,7 +60,7 @@ DELSUDO_COMMAND : ["delsudo"]
 SUDOUSERS_COMMAND : ["sudolist"]
 
 #Broadcast 
-BROADCAST_COMMAND : ["gcast"]
+BROADCAST_COMMAND : ["siaran"]
 
 #Blacklist chat
 BLACKLISTCHAT_COMMAND : ["blacklistchat"]
@@ -103,8 +103,8 @@ BLOCKED_COMMAND : ["blockedusers"]
 SPEEDTEST_COMMAND : ["speedtest"]
 
 #Voice chat commands
-ACTIVEVC_COMMAND : ["activevc"]
-ACTIVEVIDEO_COMMAND : ["activevd"]
+ACTIVEVC_COMMAND : ["vc"]
+ACTIVEVIDEO_COMMAND : ["vd"]
 
 #Gban Commands
 GBAN_COMMAND : ["mgban"]
