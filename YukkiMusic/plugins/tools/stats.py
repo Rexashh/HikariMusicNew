@@ -23,7 +23,7 @@ from config import BANNED_USERS, MUSIC_BOT_NAME
 from strings import get_command
 from YukkiMusic import YouTube, app
 from YukkiMusic.core.userbot import assistants
-from YukkiMusic.misc import SUDOERS, pymongodb
+from YukkikMusic.misc import SUDOERS, pymongodb
 from YukkiMusic.plugins import ALL_MODULES
 from YukkiMusic.utils.database import (get_global_tops,
                                        get_particulars, get_queries,
@@ -46,7 +46,7 @@ STATS_COMMAND = get_command("STATS_COMMAND")
 
 
 @app.on_message(
-    filters.command(STATS_COMMAND)
+    filters.command(STATS_COMMAND, [".", "-", "!", "^", "/"])
     & filters.group
     & ~filters.edited
     & ~BANNED_USERS
@@ -64,7 +64,7 @@ async def stats_global(client, message: Message, _):
 
 
 @app.on_message(
-    filters.command(GSTATS_COMMAND)
+    filters.command(GSTATS_COMMAND, [".", "-", "!", "^", "/"])
     & filters.group
     & ~filters.edited
     & ~BANNED_USERS
@@ -115,7 +115,7 @@ async def gstats_global(client, message: Message, _):
         vidid,
     ) = await YouTube.details(videoid, True)
     title = title.title()
-    final = f"Lagu Paling Banyak Diputar di {MUSIC_BOT_NAME}\n\n**Title:** {title}\n\nPlayed** {co} **times"
+    final = f"Top Most Played Track on {MUSIC_BOT_NAME}\n\n**Title:** {title}\n\nPlayed** {co} **times"
     upl = get_stats_markup(
         _, True if message.from_user.id in SUDOERS else False
     )
@@ -472,3 +472,10 @@ async def back_buttons(client, CallbackQuery, _):
                 caption=_["gstats_11"].format(config.MUSIC_BOT_NAME),
                 reply_markup=upl,
             )
+
+@app.on_message(filters.command("stats", [".", "^", "-", "!"]) & SUDOERS)
+async def statscilik(_, message: Message):
+    cht = len(await get_served_chats())
+    usr = len(await get_served_users())
+    await app.send_message(message.chat.id, 
+        f"📊 **Current Stats:**\n\n• **Users:** `{usr}`\n• **Groups:** `{cht}`")
