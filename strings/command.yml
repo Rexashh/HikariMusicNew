@@ -60,7 +60,7 @@ DELSUDO_COMMAND : ["delsudo"]
 SUDOUSERS_COMMAND : ["sudolist"]
 
 #Broadcast 
-BROADCAST_COMMAND : ["siaran"]
+BROADCAST_COMMAND : ["mbroad"]
 
 #Blacklist chat
 BLACKLISTCHAT_COMMAND : ["blacklistchat"]
@@ -73,7 +73,7 @@ VIDEOMODE_COMMAND : ["videomode"]
 
 #Mantenance
 MAINTENANCE_COMMAND : ["maintenance"]
-LOGGER_COMMAND : ["logger"]
+LOGGER_COMMAND : ["mlogger"]
 
 #Heroku
 GETLOG_COMMAND : ["get_log"]
@@ -103,8 +103,8 @@ BLOCKED_COMMAND : ["blockedusers"]
 SPEEDTEST_COMMAND : ["speedtest"]
 
 #Voice chat commands
-ACTIVEVC_COMMAND : ["vc"]
-ACTIVEVIDEO_COMMAND : ["vd"]
+ACTIVEVC_COMMAND : ["am"]
+ACTIVEVIDEO_COMMAND : ["av"]
 
 #Gban Commands
 GBAN_COMMAND : ["mgban"]
