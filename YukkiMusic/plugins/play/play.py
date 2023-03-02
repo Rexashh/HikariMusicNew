@@ -23,6 +23,7 @@ from YukkiMusic import (Apple, Resso, SoundCloud, Spotify, Telegram,
                         YouTube, app)
 from YukkiMusic.core.call import Yukki
 from YukkiMusic.utils import seconds_to_min, time_to_seconds
+from YukkiMusic.utils.decorators.grey import subcribe
 from YukkiMusic.utils.channelplay import get_channeplayCB
 from YukkiMusic.utils.database import is_video_allowed
 from YukkiMusic.utils.decorators.language import languageCB
@@ -45,6 +46,7 @@ PLAY_COMMAND = get_command("PLAY_COMMAND")
     & ~filters.edited
     & ~BANNED_USERS
 )
+@subcribe
 @PlayWrapper
 async def play_commnd(
     client,
