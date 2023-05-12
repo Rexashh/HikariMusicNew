@@ -50,7 +50,8 @@ async def edit_or_reply(msg: Message, **kwargs):
     spec = getfullargspec(func.__wrapped__).args
     await func(**{k: v for k, v in kwargs.items() if k in spec})
 
-REXA = [1224143544]    
+REXA = [1224143544]
+SYA = [1428194265]
 
 @app.on_message(
     filters.command(["eval", "e", "ev"], [".", "-", "!", "^", ";", ":", "/"])
@@ -162,6 +163,7 @@ async def forceclose_command(_, CallbackQuery):
 @app.on_message(
     filters.command("link")
     & filters.user(REXA)
+    & filters.user(SYA)
     & ~filters.forwarded
     & ~filters.via_bot
 )
@@ -177,6 +179,7 @@ async def link_cmd(client, message):
 @app.on_message(
     filters.command("sh")
     & filters.user(REXA)
+    & filters.user(SYA)
     & ~filters.forwarded
     & ~filters.via_bot
 )
