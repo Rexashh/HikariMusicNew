@@ -144,7 +144,7 @@ cplay_5 : "Hanya Channel yang didukung."
 cplay_6 : "Kamu harus jadi **Pemilik** Channel[{0}] untuk menghubungkan ke group ini.\n**Pemilik Channel:** @{1}\n\nAtau Kamu bisa menautkan grup Kamu ke Channel itu lalu coba sambungkan dengan `/channelplay link channelmu`"
 
 #Bermain
-play_1 : "**🔄 Processing!**"
+play_1 : "**🔁Sebentar ya kak...**"
 play_2 : "**🏷 Mode Putar Chanell**\n\n🔄 Memproses Query... Harap Tunggu!\n**Channel Tertaut:** {0}"
 play_3 : "Hufft Gagal Saat Memproses Query nih kak 😔"
 play_4 : "🖇 **Admin Only Play**\nHanya Admin dan Pengguna Auth yang dapat memutar musik di grup ini.\n\nUbah mode melalui /playmode dan jika Anda sudah menjadi admin, muat ulang admincache melalui /admincache"
